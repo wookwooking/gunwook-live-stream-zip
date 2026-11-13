@@ -105,3 +105,25 @@ footer .visitor-counter > span:nth-child(2) > strong {
   padding-top: 12px !important;
   padding-bottom: 12px !important;
 }
+/* 방문자 카운터 최종 미니 디자인 */
+footer .visitor-counter {
+  gap: 8px !important;
+  margin-bottom: 6px !important;
+}
+
+footer .visitor-counter > span {
+  width: 95px !important;
+  min-width: 95px !important;
+  min-height: 55px !important;
+  padding: 7px 8px !important;
+  gap: 3px !important;
+  font-size: 10px !important;
+}
+
+footer .visitor-counter > span > strong {
+  font-size: 17px !important;
+}
+
+footer {
+  padding: 10px !important;
+}
