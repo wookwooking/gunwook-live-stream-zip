@@ -23,107 +23,53 @@ body { background-color:#e7e4f7; background-image:linear-gradient(to right,rgba(
 .admin select{width:100%;padding:10px;border:2px solid #c4c8e2;background:white;font:inherit;color:inherit}
 .admin select:focus-visible{outline:2px solid #d27da6;outline-offset:2px}
 
-/* Public visitor counter: Windows 98 pastel footer */
-.visitor-counter{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:9px 18px;margin:0 auto 10px;font-size:12px;letter-spacing:.06em;color:#7b83af}
-.visitor-counter>span{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;background:#f7f3ff;border:1px solid #c6cee9;box-shadow:2px 2px 0 #d9d7ee}
-.visitor-counter strong{color:#bf7caa;font-size:14px;font-variant-numeric:tabular-nums}
-/* Visitor counter cards — paste at the very bottom of style.css */
+/* Public visitor counter — compact pastel cards */
 footer .visitor-counter {
   display: flex !important;
   flex-direction: row !important;
-  align-items: stretch !important;
   justify-content: center !important;
+  align-items: center !important;
   flex-wrap: wrap !important;
-  gap: 12px !important;
-  margin: 0 auto 12px !important;
+  gap: 8px !important;
+  margin: 0 auto 6px !important;
+  font-size: 10px !important;
   letter-spacing: normal !important;
+  color: #7b83af !important;
 }
 footer .visitor-counter > span {
   box-sizing: border-box !important;
   display: flex !important;
   flex-direction: column !important;
-  align-items: center !important;
   justify-content: center !important;
-  gap: 7px !important;
-  width: 128px !important;
-  min-width: 128px !important;
-  min-height: 91px !important;
-  padding: 13px 10px !important;
+  align-items: center !important;
+  gap: 3px !important;
+  width: 95px !important;
+  min-width: 0 !important;
+  min-height: 55px !important;
+  padding: 7px 8px !important;
   background: #fff9fd !important;
   border: 1px solid #c6cee9 !important;
   border-radius: 2px !important;
-  box-shadow: 3px 3px 0 #d9d7ee !important;
+  box-shadow: 2px 2px 0 #d9d7ee !important;
   color: #7b83af !important;
   font-family: Nunito, 'Malgun Gothic', sans-serif !important;
-  font-size: 11px !important;
+  font-size: 10px !important;
   font-weight: 700 !important;
-  line-height: 1.3 !important;
-  letter-spacing: .12em !important;
+  line-height: 1.2 !important;
+  letter-spacing: .06em !important;
   text-align: center !important;
 }
 footer .visitor-counter > span > strong {
   display: block !important;
   width: 100% !important;
-  color: #bf7caa !important;
-  font-family: Nunito, 'Malgun Gothic', sans-serif !important;
-  font-size: 23px !important;
-  font-weight: 800 !important;
+  font-size: 17px !important;
   line-height: 1.2 !important;
+  font-weight: 800 !important;
   letter-spacing: 0 !important;
+  color: #bf7caa !important;
   font-variant-numeric: tabular-nums !important;
-  text-align: center !important;
 }
 footer .visitor-counter > span:nth-child(2) > strong {
   color: #829bd6 !important;
 }
-@media (max-width: 340px) {
-  footer .visitor-counter { gap: 8px !important; }
-  footer .visitor-counter > span { width: 115px !important; min-width: 115px !important; }
-}
-/* 방문자 카운터 미니 사이즈 */
-.visitor-stats {
-  gap: 8px !important;
-}
-
-.visitor-card {
-  width: 95px !important;
-  min-height: 55px !important;
-  padding: 7px 9px !important;
-  gap: 3px !important;
-}
-
-.visitor-card .visitor-number {
-  font-size: 17px !important;
-  line-height: 1.2 !important;
-}
-
-.visitor-card .visitor-label {
-  font-size: 10px !important;
-}
-
-.site-footer {
-  padding-top: 12px !important;
-  padding-bottom: 12px !important;
-}
-/* 방문자 카운터 최종 미니 디자인 */
-footer .visitor-counter {
-  gap: 8px !important;
-  margin-bottom: 6px !important;
-}
-
-footer .visitor-counter > span {
-  width: 95px !important;
-  min-width: 95px !important;
-  min-height: 55px !important;
-  padding: 7px 8px !important;
-  gap: 3px !important;
-  font-size: 10px !important;
-}
-
-footer .visitor-counter > span > strong {
-  font-size: 17px !important;
-}
-
-footer {
-  padding: 10px !important;
-}
+footer { padding: 10px !important; }
