@@ -80,3 +80,28 @@ footer .visitor-counter > span:nth-child(2) > strong {
   footer .visitor-counter { gap: 8px !important; }
   footer .visitor-counter > span { width: 115px !important; min-width: 115px !important; }
 }
+/* 방문자 카운터 미니 사이즈 */
+.visitor-stats {
+  gap: 8px !important;
+}
+
+.visitor-card {
+  width: 95px !important;
+  min-height: 55px !important;
+  padding: 7px 9px !important;
+  gap: 3px !important;
+}
+
+.visitor-card .visitor-number {
+  font-size: 17px !important;
+  line-height: 1.2 !important;
+}
+
+.visitor-card .visitor-label {
+  font-size: 10px !important;
+}
+
+.site-footer {
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
