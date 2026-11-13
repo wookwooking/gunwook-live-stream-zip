@@ -22,3 +22,20 @@ body { background-color:#e7e4f7; background-image:linear-gradient(to right,rgba(
 .mark-label-instagram{color:#728fd4}
 .admin select{width:100%;padding:10px;border:2px solid #c4c8e2;background:white;font:inherit;color:inherit}
 .admin select:focus-visible{outline:2px solid #d27da6;outline-offset:2px}
+
+/* 라이브 종류별 동그라미 색상 */
+.mark.pluschat,
+.mark.plus,
+.mark[data-type="pluschat"],
+.mark[data-type="plus"] {
+  background: #F3A8C9 !important;
+  box-shadow: 0 0 0 2px #FFF0F7;
+}
+
+.mark.instagram,
+.mark.insta,
+.mark[data-type="instagram"],
+.mark[data-type="insta"] {
+  background: #A6BDF5 !important;
+  box-shadow: 0 0 0 2px #EDF2FF;
+}
