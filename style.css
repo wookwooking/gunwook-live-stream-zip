@@ -27,3 +27,56 @@ body { background-color:#e7e4f7; background-image:linear-gradient(to right,rgba(
 .visitor-counter{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:9px 18px;margin:0 auto 10px;font-size:12px;letter-spacing:.06em;color:#7b83af}
 .visitor-counter>span{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;background:#f7f3ff;border:1px solid #c6cee9;box-shadow:2px 2px 0 #d9d7ee}
 .visitor-counter strong{color:#bf7caa;font-size:14px;font-variant-numeric:tabular-nums}
+/* Visitor counter cards — paste at the very bottom of style.css */
+footer .visitor-counter {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: stretch !important;
+  justify-content: center !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+  margin: 0 auto 12px !important;
+  letter-spacing: normal !important;
+}
+footer .visitor-counter > span {
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 7px !important;
+  width: 128px !important;
+  min-width: 128px !important;
+  min-height: 91px !important;
+  padding: 13px 10px !important;
+  background: #fff9fd !important;
+  border: 1px solid #c6cee9 !important;
+  border-radius: 2px !important;
+  box-shadow: 3px 3px 0 #d9d7ee !important;
+  color: #7b83af !important;
+  font-family: Nunito, 'Malgun Gothic', sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  letter-spacing: .12em !important;
+  text-align: center !important;
+}
+footer .visitor-counter > span > strong {
+  display: block !important;
+  width: 100% !important;
+  color: #bf7caa !important;
+  font-family: Nunito, 'Malgun Gothic', sans-serif !important;
+  font-size: 23px !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0 !important;
+  font-variant-numeric: tabular-nums !important;
+  text-align: center !important;
+}
+footer .visitor-counter > span:nth-child(2) > strong {
+  color: #829bd6 !important;
+}
+@media (max-width: 340px) {
+  footer .visitor-counter { gap: 8px !important; }
+  footer .visitor-counter > span { width: 115px !important; min-width: 115px !important; }
+}
