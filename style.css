@@ -23,19 +23,7 @@ body { background-color:#e7e4f7; background-image:linear-gradient(to right,rgba(
 .admin select{width:100%;padding:10px;border:2px solid #c4c8e2;background:white;font:inherit;color:inherit}
 .admin select:focus-visible{outline:2px solid #d27da6;outline-offset:2px}
 
-/* 라이브 종류별 동그라미 색상 */
-.mark.pluschat,
-.mark.plus,
-.mark[data-type="pluschat"],
-.mark[data-type="plus"] {
-  background: #F3A8C9 !important;
-  box-shadow: 0 0 0 2px #FFF0F7;
-}
-
-.mark.instagram,
-.mark.insta,
-.mark[data-type="instagram"],
-.mark[data-type="insta"] {
-  background: #A6BDF5 !important;
-  box-shadow: 0 0 0 2px #EDF2FF;
-}
+/* Public visitor counter: Windows 98 pastel footer */
+.visitor-counter{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:9px 18px;margin:0 auto 10px;font-size:12px;letter-spacing:.06em;color:#7b83af}
+.visitor-counter>span{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;background:#f7f3ff;border:1px solid #c6cee9;box-shadow:2px 2px 0 #d9d7ee}
+.visitor-counter strong{color:#bf7caa;font-size:14px;font-variant-numeric:tabular-nums}
