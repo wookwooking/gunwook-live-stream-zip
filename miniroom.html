@@ -33,7 +33,7 @@
 #mrEditor .mr-shop-item.is-applied .mr-shop-icon{outline:2px solid #b18ac9;outline-offset:1px}
 @media(max-width:780px){#mrEditor .mr-shop{grid-template-columns:repeat(4,minmax(0,1fr))}#mrEditor .mr-stage{min-height:300px}}
 @media(max-width:460px){#mrEditor .mr-shop{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 4px}#mrEditor .mr-shop-tab{padding:6px 8px;font-size:11px}#mrEditor .mr-shop-icon{height:68px}}
-</style></head><body><div class="desktop"><main class="window"><div class="titlebar"><span>🏠 GUNWOOK MINI ROOM</span><div class="window-controls"><span>_</span><span>□</span><span>×</span></div></div><nav class="toolbar"><button type="button" onclick="location.href='index.html'">⌂ 홈으로 돌아가기</button><span class="toolbar-note">♡ MINI ROOM</span></nav><div class="mr-page" id="miniroomApp"><div class="mr-panel"><div class="mr-heading">♡ GUNWOOK MINI ROOM</div><section id="mrWelcome" class="mr-welcome"><h2>♡ 나만의 미니룸 ♡</h2><p>닉네임만 정하면 바로 방을 꾸밀 수 있어요!<br>가구를 배치하고 나만의 공간을 만들어 보세요.</p><input id="mrNickname" maxlength="20" placeholder="닉네임 (2~20자)" autocomplete="nickname"><button class="mr-action" id="mrStart" type="button">♡ 내 방 만들기</button><p class="mr-note">현재 기기의 브라우저에 로그인 정보가 저장됩니다.<br>계정 연결 전에는 브라우저 데이터 삭제 시 방에 접근하지 못할 수 있어요.</p></section><section id="mrEditor" hidden><div class="mr-top"><h2 id="mrNicknameLabel">나의 방</h2><div class="mr-top-actions"><button id="mrRename" type="button">닉네임 변경</button><button id="mrRemove" type="button" disabled>선택한 가구 치우기</button><button id="mrSaveLayout" type="button" disabled>♡ 배치 저장하기</button><button id="mrAccount" type="button">계정 연결 안내</button></div></div><div class="mr-layout"><div class="mr-stage"><div class="mr-scene" id="mrScene"><svg class="mr-room-art" viewBox="0 0 720 510" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+</style></head><body><div class="desktop"><main class="window"><div class="titlebar"><span>🏠 GUNWOOK MINI ROOM</span><div class="window-controls"><span>_</span><span>□</span><span>×</span></div></div><nav class="toolbar"><button type="button" onclick="location.href='index.html'">⌂ 홈으로 돌아가기</button><span class="toolbar-note">♡ MINI ROOM</span></nav><div class="mr-page" id="miniroomApp"><div class="mr-panel"><div class="mr-heading">♡ GUNWOOK MINI ROOM</div><section id="mrWelcome" class="mr-welcome"><h2>♡ 나만의 미니룸 ♡</h2><p>닉네임만 정하면 바로 방을 꾸밀 수 있어요!<br>가구를 배치하고 나만의 공간을 만들어 보세요.</p><input id="mrNickname" maxlength="20" placeholder="닉네임 (2~20자)" autocomplete="nickname"><button class="mr-action" id="mrStart" type="button">♡ 내 방 만들기</button><p class="mr-note">현재 기기의 브라우저에 로그인 정보가 저장됩니다.<br>계정 연결 전에는 브라우저 데이터 삭제 시 방에 접근하지 못할 수 있어요.</p></section><section id="mrEditor" hidden><div class="mr-top"><h2 id="mrNicknameLabel">나의 방</h2><div class="mr-top-actions"><button id="mrRename" type="button">닉네임 변경</button><button id="mrEditLayout" type="button">♡ 다시 꾸미기</button><button id="mrRemove" type="button" disabled>선택한 가구 치우기</button><button id="mrSaveLayout" type="button" disabled>♡ 배치 저장하기</button><button id="mrAccount" type="button">계정 연결 안내</button></div></div><div class="mr-layout"><div class="mr-stage"><div class="mr-scene" id="mrScene"><svg class="mr-room-art" viewBox="0 0 720 510" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
 <defs>
  <pattern id="mrStars" width="58" height="58" patternUnits="userSpaceOnUse"><path d="M18 8l2.5 7 7 2.5-7 2.5-2.5 7-2.5-7-7-2.5 7-2.5z" fill="#fff" opacity=".65"/></pattern>
  <pattern id="mrWood" width="38" height="38" patternUnits="userSpaceOnUse" patternTransform="matrix(.92 .46 -.92 .46 0 0)"><rect width="38" height="38" fill="#f7eddb"/><path d="M0 0H38M0 19H38M0 38H38" stroke="#e6d6c5" stroke-width="1.5"/><path d="M19 0V19M0 19V38" stroke="#e6d6c5" stroke-width="1"/><path d="M4 8h10M24 29h9" stroke="#fffaf2" stroke-width="1.5" opacity=".8"/></pattern>
@@ -144,7 +144,9 @@ apply();render();
  let frame=-1;
  function setFrame(n){if(frame===n)return;frame=n;bear.setAttribute('href',n<0?idleSprite:walkSprites[n]);}
  const inside=(cx,foot)=>foot>=240&&foot<=447&&Math.abs(cx-360)<=Math.max(0,238*Math.min((foot-220)/118,(457-foot)/119)-12);
- const floor=Array.from(svg.querySelectorAll('path')).find(p=>p.getAttribute('d')==='M122 338L360 220L598 338L360 457Z'&&p.getAttribute('fill')==='url(#mrWood)');
+ const stage=document.getElementById('mrScene');
+ let editing=false;
+ document.addEventListener('gunwook:editmode',e=>{editing=!!e.detail.editing;bear.style.display=editing?'none':'';if(editing)stop();});
  let x=328,y=284,dragging=false,dx=0,dy=0,raf=0,walking=false;
  try{const p=JSON.parse(localStorage.getItem(key)||'null');if(p&&Number.isFinite(p.x)&&Number.isFinite(p.y)&&inside(p.x+W/2,p.y+H)){x=p.x;y=p.y;}}catch{}
  function save(){try{localStorage.setItem(key,JSON.stringify({x,y}));}catch{}}
@@ -166,10 +168,10 @@ apply();render();
  }
  render();
  // 바닥 영역만 클릭 반응: 벽/상점/가구 클릭은 그대로
- if(floor){floor.style.cursor='pointer';floor.addEventListener('click',e=>{
-   if(dragging)return;const p=point(e);if(p)walkTo(p.x,p.y);
+ if(stage){stage.addEventListener('click',e=>{
+   if(editing||dragging||e.target.closest?.('button'))return;const p=point(e);if(p)walkTo(p.x,p.y);
  });}
- bear.addEventListener('pointerdown',e=>{const p=point(e);if(!p)return;stop();dragging=true;dx=p.x-x;dy=p.y-y;bear.setPointerCapture(e.pointerId);e.preventDefault();e.stopPropagation();});
+ bear.addEventListener('pointerdown',e=>{if(editing)return;const p=point(e);if(!p)return;stop();dragging=true;dx=p.x-x;dy=p.y-y;bear.setPointerCapture(e.pointerId);e.preventDefault();e.stopPropagation();});
  bear.addEventListener('pointermove',e=>{if(!dragging)return;const p=point(e);if(!p)return;const nx=p.x-dx,ny=p.y-dy;if(inside(nx+W/2,ny+H)){x=nx;y=ny;render();}});
  function finish(){if(!dragging)return;dragging=false;save();}
  bear.addEventListener('pointerup',finish);bear.addEventListener('pointercancel',finish);

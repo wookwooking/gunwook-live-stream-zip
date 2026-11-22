@@ -43,3 +43,14 @@
 /* 회전 버튼은 가구 버튼과 분리해 클릭이 확실히 작동하도록 함 */
 #mrEditor .mr-floor > .mr-rotate-icon{display:flex;position:absolute;align-items:center;justify-content:center;width:24px;height:24px;padding:0;border:1px solid #b6a2d1;border-radius:50%;background:#fffafd;color:#8c6aa9;cursor:pointer;box-shadow:0 2px 5px #58496d33;transform:translate(-50%,-50%);pointer-events:auto;}
 #mrEditor .mr-floor > .mr-rotate-icon svg{display:block;flex:none;}
+
+/* 편집 중 캐릭터 숨김, 저장 후 가구 고정 / 캐릭터 전면 표시 */
+#mrEditor .mr-room-art{z-index:2;pointer-events:none;}
+#mrEditor #mrBearCharacter{pointer-events:all;}
+#mrEditor .mr-floor{z-index:1;}
+#mrEditor.mr-locked .mr-furniture{pointer-events:none;cursor:default;}
+#mrEditor.mr-locked .mr-rotate-icon{display:none!important;}
+#miniroomApp.mr-locked .mr-furniture{pointer-events:none;cursor:default;}
+#miniroomApp.mr-locked .mr-rotate-icon{display:none!important;}
+#miniroomApp.mr-editing #mrBearCharacter{display:none;}
+#miniroomApp.mr-locked #mrEditLayout{background:#efe3fb;border-color:#a98ac8;color:#805aa0;font-weight:700;}
