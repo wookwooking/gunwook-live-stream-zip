@@ -35,7 +35,7 @@
     const root = $('archiveEpisodes'); root.replaceChildren();
     const episodeNumbers = [...new Set(videos.filter(v => v.program === program).map(v => Number(v.episode)))].filter(Number.isInteger).sort((a,b)=>a-b);
     if (!episodeNumbers.length) {
-      const p=document.createElement('p'); p.className='archive-placeholder'; p.textContent='아직 등록된 회차가 없어요 ♡'; root.append(p);
+      const p=document.createElement('p'); p.className='archive-placeholder'; p.textContent='등록된 회차 없음'; root.append(p);
       episode=null;
     } else {
       if (!episodeNumbers.includes(episode)) episode=episodeNumbers[0];
