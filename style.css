@@ -119,3 +119,14 @@ footer { padding: 10px !important; }
 .guestbook-entry-text{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.7;font-size:13px;margin:0}.guestbook-delete{margin-top:10px;font-size:11px;padding:5px 9px}
 .guestbook-empty{text-align:center;padding:28px 10px;font-size:13px;color:#9995b6}.guestbook-pagination{text-align:center;margin-top:16px}
 @media(max-width:760px){.guestbook-view{padding:12px}.guestbook-form{padding:13px}.guestbook-entry{padding:13px}.guestbook-entry-head{align-items:flex-start;flex-direction:column;gap:4px}}
+
+
+/* 방명록 등록 버튼 크기 줄이기 */
+#guestbookSubmit {
+  width: auto;
+  min-width: 0;
+  padding: 6px 11px;
+  font-size: 11px;
+  font-weight: 600;
+  box-shadow: 1px 1px 0 #a2a8c9;
+}
