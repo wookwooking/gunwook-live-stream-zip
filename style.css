@@ -221,21 +221,26 @@ footer { padding: 10px !important; }
   text-decoration: underline;
 }
 
-/* VIDEO ARCHIVE 프로그램 버튼 마우스 오버 효과 */
-.archive-program {
-  transition: background-color 0.2s ease, filter 0.2s ease;
-}
 
-.archive-program:hover {
-  filter: brightness(1.08);
+/* VIDEO ARCHIVE 버튼 그라데이션 효과 */
+.archive-program {
+  transition: filter 0.25s ease;
 }
 
 /* BOYS PLANET */
 .archive-program:first-child:hover {
-  background: #fff5fb;
+  background: linear-gradient(
+    135deg,
+    #fffafd 0%,
+    #fceaf5 100%
+  ) !important;
 }
 
 /* 극한데뷔 야생돌 */
 .archive-program:nth-child(2):hover {
-  background: #f5f8ff;
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #eaf0ff 100%
+  ) !important;
 }
