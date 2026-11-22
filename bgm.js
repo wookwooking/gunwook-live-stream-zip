@@ -1,9 +1,34 @@
 (()=>{'use strict';
 // Edit this list to add tracks. MP3s belong in the music/ folder in the repository.
-const TRACKS=[
-  // {title:'노래 제목',artist:'아티스트',file:'music/song-01.mp3'},
-  // {title:'두 번째 노래',artist:'아티스트',file:'music/song-02.mp3'},
+
+const TRACKS = [
+  {
+    title: 'Customize',
+    artist: '박건욱',
+    file: 'music/Customize.mp3'
+  },
+  {
+    title: 'Day After Day',
+    artist: '박건욱',
+    file: 'music/Day%20After%20Day.mp3'
+  },
+  {
+    title: 'Luv Bug',
+    artist: '박건욱',
+    file: 'music/Luv%20Bug.mp3'
+  },
+  {
+    title: 'Placebo',
+    artist: '박건욱',
+    file: 'music/Placebo.mp3'
+  },
+  {
+    title: '솔직하지 못해서',
+    artist: '박건욱, 김태래',
+    file: 'music/%EC%86%94%EC%A7%81%ED%95%98%EC%A7%80%20%EB%AA%BB%ED%95%B4%EC%84%9C.mp3'
+  }
 ];
+
 const widget=document.createElement('aside');widget.className='bgm-widget';widget.setAttribute('aria-label','배경음악 플레이어');
 widget.innerHTML=`<div class="bgm-window"><div class="bgm-titlebar"><span>♫ GUNWOOK MUSIC PLAYER</span><button type="button" id="bgmMinimize" aria-label="음악 플레이어 접기" aria-expanded="true">−</button></div><div class="bgm-content"><div class="bgm-track"><span class="bgm-disc" aria-hidden="true">♫</span><div class="bgm-track-info"><div class="bgm-name" id="bgmName">음악을 추가해 주세요 ♡</div><div class="bgm-state" id="bgmState" role="status">일시정지</div></div></div><div class="bgm-controls"><button type="button" id="bgmPrev" aria-label="이전 곡">⏮</button><button type="button" class="bgm-play" id="bgmPlay" aria-label="재생">▶</button><button type="button" id="bgmNext" aria-label="다음 곡">⏭</button></div><label class="bgm-volume">🔉 <input type="range" id="bgmVolume" min="0" max="100" value="35" aria-label="음량"><span id="bgmVolumeValue">35%</span></label><button type="button" class="bgm-list-toggle" id="bgmPlaylistToggle" aria-expanded="false">☷ PLAYLIST ▾</button><ol class="bgm-list" id="bgmPlaylist" hidden></ol></div></div>`;
 document.body.append(widget);
