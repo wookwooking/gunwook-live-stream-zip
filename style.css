@@ -252,3 +252,16 @@ footer { padding: 10px !important; }
   .bgm-widget .bgm-titlebar button { cursor:pointer !important; touch-action:auto; }
   .bgm-widget.bgm-dragging { user-select:none; }
 }
+
+
+/* 음악 플레이어 드래그 중에도 거니니 커서 유지 */
+@media (pointer: fine) {
+  .bgm-widget,
+  .bgm-widget *,
+  .bgm-titlebar,
+  .bgm-titlebar *,
+  .bgm-widget.dragging,
+  .bgm-widget.dragging * {
+    cursor: url('assets/puppy-cursor.png') 32 32, auto !important;
+  }
+}
