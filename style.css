@@ -163,3 +163,36 @@ footer { padding: 10px !important; }
 .guestbook-reply:nth-child(even){background:#fff3fa}
 .guestbook-reply .guestbook-entry-head{margin-bottom:7px}
 @media(max-width:600px){.guestbook-reply{margin-left:8px;padding:10px}}
+
+
+/* 방명록 삭제 / 답글 버튼을 텍스트처럼 표시 */
+.guestbook-entry .guestbook-delete,
+.guestbook-entry .guestbook-reply-btn,
+.guestbook-entry .guestbook-reply-button,
+.guestbook-entry .guestbook-reply-toggle,
+.guestbook-entry .guestbook-reply-action,
+.guestbook-entry .reply-button,
+.guestbook-entry .reply-toggle {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 3px 5px !important;
+  margin-top: 8px;
+  min-width: 0;
+  color: #9293b3;
+  font-size: 11px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.guestbook-entry .guestbook-delete:hover,
+.guestbook-entry .guestbook-reply-btn:hover,
+.guestbook-entry .guestbook-reply-button:hover,
+.guestbook-entry .guestbook-reply-toggle:hover,
+.guestbook-entry .guestbook-reply-action:hover,
+.guestbook-entry .reply-button:hover,
+.guestbook-entry .reply-toggle:hover {
+  background: none !important;
+  color: #c17fa8;
+  text-decoration: underline;
+}
