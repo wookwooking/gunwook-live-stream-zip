@@ -16,7 +16,10 @@ for(const id of ['archiveLiveTab','archiveVideoTab']){$(id)?.addEventListener('c
 $('homeButton')?.addEventListener('click',()=>{view.hidden=true;tab.classList.remove('active');tab.setAttribute('aria-pressed','false');$('archiveVideoView').hidden=true;$('liveArchiveView').hidden=false;for(const id of ['archiveLiveTab','archiveVideoTab']){$(id)?.classList.toggle('active',id==='archiveLiveTab');$(id)?.setAttribute('aria-pressed',String(id==='archiveLiveTab'))};});
 function makeEntry(entry){const card=document.createElement('article');card.className='guestbook-entry';
  const head=document.createElement('div');head.className='guestbook-entry-head';
- const name=document.createElement('span');name.className='guestbook-entry-name';name.textContent='♡ '+entry.nickname;
+ const name=document.createElement('span');name.className='guestbook-entry-name';
+name.textContent=entry.nickname;
+name.classList.add('guestbook-biscuit-name');
+
  const date=document.createElement('time');date.className='guestbook-entry-date';date.textContent=new Date(entry.created_at).toLocaleString('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'});
  head.append(name,date);const message=document.createElement('p');message.className='guestbook-entry-text';message.textContent=entry.message;card.append(head,message);
  if(admin){const del=document.createElement('button');del.type='button';del.className='guestbook-delete';del.textContent='관리자 삭제';del.onclick=async()=>{if(!confirm('이 방명록을 삭제할까요?'))return;const {error}=await client.from('guestbook_entries').delete().eq('id',entry.id);if(error){status('삭제 실패: 관리자 권한을 확인해 주세요.');return}refresh()};card.append(del)}return card;
