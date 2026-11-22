@@ -27,3 +27,10 @@
 
 /* 크림 라벤더 인테리어: 방 주변 배경을 부드럽게 통일 */
 .mr-stage{background:linear-gradient(145deg,#faf7ff,#eee9f9)}
+
+/* 가구 편집: 선택 테두리와 배경 하이라이트 제거 */
+#mrEditor .mr-furniture, #mrEditor .mr-furniture.is-selected, #mrEditor .mr-furniture:focus, #mrEditor .mr-furniture:focus-visible {outline:none!important;background:transparent!important;border:none!important;box-shadow:none!important;}
+#mrEditor .mr-furniture .mr-rotate-icon {display:none;position:absolute;right:-13px;top:38%;width:23px;height:23px;border:1px solid #b6a2d1;border-radius:50%;background:#fffafd;color:#8c6aa9;font:700 18px/21px sans-serif;text-align:center;cursor:pointer;pointer-events:auto;z-index:5;box-shadow:0 2px 5px #58496d33;}
+#mrEditor .mr-furniture.is-selected .mr-rotate-icon {display:block;}
+#mrSaveLayout {background:#efe3fb;border:1px solid #a98ac8;color:#805aa0;font-weight:700;}
+#mrSaveLayout:disabled {opacity:.55;}
