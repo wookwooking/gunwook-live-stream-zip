@@ -25,7 +25,7 @@ const TRACKS = [
   },
   {
     title: 'Customize',
-    artist: '박건욱',
+    artist: '제로베이스원',
     file: 'music/Customize.mp3'
   }
 ];
