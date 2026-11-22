@@ -34,3 +34,8 @@
 #mrEditor .mr-furniture.is-selected .mr-rotate-icon {display:block;}
 #mrSaveLayout {background:#efe3fb;border:1px solid #a98ac8;color:#805aa0;font-weight:700;}
 #mrSaveLayout:disabled {opacity:.55;}
+
+/* B 둥근 회전 아이콘: 원 내부 SVG 정중앙 정렬 */
+#mrEditor .mr-furniture .mr-rotate-icon{display:none;align-items:center;justify-content:center;line-height:1;padding:0;box-sizing:border-box;}
+#mrEditor .mr-furniture.is-selected .mr-rotate-icon{display:flex;}
+#mrEditor .mr-furniture .mr-rotate-icon svg{display:block;flex:none;}
