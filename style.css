@@ -196,3 +196,27 @@ footer { padding: 10px !important; }
   color: #c17fa8;
   text-decoration: underline;
 }
+
+/* 방명록 새로고침 / 답글 등록을 텍스트로 변경 */
+#guestbookRefresh,
+.guestbook-reply-form button,
+.guestbook-reply-submit {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 3px 5px !important;
+  min-width: 0 !important;
+  color: #9293b3 !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  text-decoration: none;
+}
+
+/* 마우스를 올렸을 때 */
+#guestbookRefresh:hover,
+.guestbook-reply-form button:hover,
+.guestbook-reply-submit:hover {
+  background: transparent !important;
+  color: #c17fa8 !important;
+  text-decoration: underline;
+}
