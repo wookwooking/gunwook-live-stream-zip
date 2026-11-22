@@ -287,3 +287,41 @@ footer { padding: 10px !important; }
   }
   .bgm-mobile-toggle:hover { background:linear-gradient(135deg,#fff,#f6e4f4) !important; }
 }
+
+/* 모바일 CD 음악 플레이어 버튼 */
+@media (max-width: 600px) {
+  .bgm-mobile-toggle {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    padding: 0;
+    border: 2px solid #b8a5d9;
+    border-radius: 12px;
+    background: linear-gradient(
+      135deg,
+      #fff5fc 0%,
+      #e9ddfa 55%,
+      #dfe8ff 100%
+    );
+    color: #8b79b8;
+    box-shadow: 2px 3px 0 #b6b2d6;
+    font-size: 25px;
+    line-height: 1;
+  }
+
+  .bgm-mobile-toggle svg {
+    display: block;
+    width: 23px;
+    height: 23px;
+  }
+
+  .bgm-mobile-toggle:hover {
+    background: linear-gradient(
+      135deg,
+      #ffffff,
+      #eee5ff
+    );
+  }
+}
