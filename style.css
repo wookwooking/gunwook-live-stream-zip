@@ -220,3 +220,22 @@ footer { padding: 10px !important; }
   color: #c17fa8 !important;
   text-decoration: underline;
 }
+
+/* VIDEO ARCHIVE 프로그램 버튼 마우스 오버 효과 */
+.archive-program {
+  transition: background-color 0.2s ease, filter 0.2s ease;
+}
+
+.archive-program:hover {
+  filter: brightness(1.08);
+}
+
+/* BOYS PLANET */
+.archive-program:first-child:hover {
+  background: #fff5fb;
+}
+
+/* 극한데뷔 야생돌 */
+.archive-program:nth-child(2):hover {
+  background: #f5f8ff;
+}
