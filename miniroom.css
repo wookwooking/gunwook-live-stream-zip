@@ -63,3 +63,8 @@
 #mrEditor .mr-character-layer{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none;overflow:visible;}
 #mrEditor .mr-character-layer #mrBearCharacter{pointer-events:all;}
 #miniroomApp.mr-editing .mr-character-layer{display:none;}
+
+/* Undo and reset controls */
+#mrUndo,#mrResetFurniture{background:#fff8ff;border:1px solid #cdb7df;color:#805aa0;}
+#mrUndo:disabled{opacity:.45;cursor:not-allowed;}
+#miniroomApp.mr-locked #mrUndo,#miniroomApp.mr-locked #mrResetFurniture{display:none;}
