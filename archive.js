@@ -30,7 +30,7 @@
     renderEpisodes();
   }
   function renderEpisodes() {
-    msg('archiveProgramTitle', '♡ '+names[program]+' · EPISODES');
+    msg('archiveProgramTitle', '💙 '+names[program]+' · EPISODES');
     document.querySelectorAll('[data-program]').forEach(b => b.classList.toggle('selected', b.dataset.program === program));
     const root = $('archiveEpisodes'); root.replaceChildren();
     const episodeNumbers = [...new Set(videos.filter(v => v.program === program).map(v => Number(v.episode)))].filter(Number.isInteger).sort((a,b)=>a-b);
@@ -89,7 +89,7 @@
     if(online){const {error}=await db.from('archive_videos').insert({program:p,episode:n,title,youtube_url:url});if(error){msg('archiveAdminStatus','등록 실패: '+error.message);return;}}
     else{videos.unshift({id:crypto.randomUUID(),program:p,episode:n,title,youtube_url:url});saveLocal();}
     $('archiveTitleInput').value='';$('archiveUrlInput').value='';program=p;episode=n;
-    msg('archiveAdminStatus','♡ 영상이 등록되었어요! 영상 모음 탭에서 확인해 주세요.');await refresh();
+    msg('archiveAdminStatus',' 영상이 등록되었어요! 영상 모음 탭에서 확인해 주세요.');await refresh();
   };
   if(online)db.auth.onAuthStateChange(()=>{updateAuth()});
   $('adminToggle').addEventListener('click',()=>{setTimeout(updateAuth,100)});
