@@ -9,6 +9,30 @@
 @media(min-width:1050px){#mrEditor .mr-shop{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:600px){#mrEditor .mr-stage{min-height:280px}#mrEditor .mr-shop{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:380px){#mrEditor .mr-shop{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* 레트로 아이템샵: 방 아래 상품 카탈로그 */
+#mrEditor .mr-layout{display:flex;flex-direction:column;gap:18px}
+#mrEditor .mr-stage{width:100%;box-sizing:border-box;min-height:500px}
+#mrEditor .mr-layout>.mr-panel{width:100%;margin:0;box-sizing:border-box}
+#mrEditor .mr-shop{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px 9px}
+#mrEditor .mr-shop-item{min-height:0;padding:5px 3px 7px;border:1px solid transparent;background:transparent;box-shadow:none;gap:3px;justify-content:flex-start;transition:background .15s,border-color .15s}
+#mrEditor .mr-shop-item:hover,#mrEditor .mr-shop-item:focus-visible{background:#fbf1ff;border-color:#d6bee5}
+#mrEditor .mr-shop-icon{width:100%;height:82px;display:flex;align-items:center;justify-content:center;background:#fff8fc;border:1px solid #ebdcef;box-sizing:border-box}
+#mrEditor .mr-shop-icon img{max-width:90%;max-height:75px}
+#mrEditor .mr-shop-item .mr-product-name{font-size:11px;line-height:1.3;color:#68628c;text-align:center;min-height:28px;word-break:keep-all}
+#mrEditor .mr-product-price{font-size:10px;color:#a17ab4}
+#mrEditor .mr-product-free{background:#ffe3a5;color:#8a5c24;border-radius:8px;padding:1px 7px;font-size:9px;font-weight:800}
+#mrEditor .mr-shop-nav{display:flex;flex-wrap:wrap;gap:4px;border-bottom:1px solid #d7c7e9;padding-bottom:9px;margin-bottom:10px}
+#mrEditor .mr-shop-tab{border:1px solid #d9c6e5;background:#f9f2ff;color:#846a9e;font-size:12px;font-weight:700;padding:7px 11px;border-radius:3px}
+#mrEditor .mr-shop-tab[aria-selected=true]{background:#bca2d8;color:white;border-color:#a38bc4}
+#mrEditor .mr-shop-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:11px;color:#9b83aa;gap:8px}
+#mrEditor .mr-shop-pager{display:flex;justify-content:center;gap:8px;margin-top:17px}
+#mrEditor .mr-shop-pager button{border:1px solid #d8c8e6;background:#fff8fc;color:#846a9e;padding:4px 9px;font-size:11px}
+#mrEditor .mr-shop-pager button[aria-current=page]{background:#bca2d8;color:white}
+#mrEditor .mr-swatch{width:85%;height:70px;display:block;border:1px solid #d8c5dd;box-shadow:inset 0 0 0 4px #ffffff88}
+#mrEditor .mr-shop-item.is-applied .mr-shop-icon{outline:2px solid #b18ac9;outline-offset:1px}
+@media(max-width:780px){#mrEditor .mr-shop{grid-template-columns:repeat(4,minmax(0,1fr))}#mrEditor .mr-stage{min-height:300px}}
+@media(max-width:460px){#mrEditor .mr-shop{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 4px}#mrEditor .mr-shop-tab{padding:6px 8px;font-size:11px}#mrEditor .mr-shop-icon{height:68px}}
 </style></head><body><div class="desktop"><main class="window"><div class="titlebar"><span>🏠 GUNWOOK MINI ROOM</span><div class="window-controls"><span>_</span><span>□</span><span>×</span></div></div><nav class="toolbar"><button type="button" onclick="location.href='index.html'">⌂ 홈으로 돌아가기</button><span class="toolbar-note">♡ MINI ROOM</span></nav><div class="mr-page" id="miniroomApp"><div class="mr-panel"><div class="mr-heading">♡ GUNWOOK MINI ROOM</div><section id="mrWelcome" class="mr-welcome"><h2>♡ 나만의 미니룸 ♡</h2><p>닉네임만 정하면 바로 방을 꾸밀 수 있어요!<br>가구를 배치하고 나만의 공간을 만들어 보세요.</p><input id="mrNickname" maxlength="20" placeholder="닉네임 (2~20자)" autocomplete="nickname"><button class="mr-action" id="mrStart" type="button">♡ 내 방 만들기</button><p class="mr-note">현재 기기의 브라우저에 로그인 정보가 저장됩니다.<br>계정 연결 전에는 브라우저 데이터 삭제 시 방에 접근하지 못할 수 있어요.</p></section><section id="mrEditor" hidden><div class="mr-top"><h2 id="mrNicknameLabel">나의 방</h2><div class="mr-top-actions"><button id="mrRename" type="button">닉네임 변경</button><button id="mrRemove" type="button" disabled>선택한 가구 치우기</button><button id="mrAccount" type="button">계정 연결 안내</button></div></div><div class="mr-layout"><div class="mr-stage"><div class="mr-scene" id="mrScene"><svg class="mr-room-art" viewBox="0 0 720 510" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
 <defs>
  <pattern id="mrStars" width="58" height="58" patternUnits="userSpaceOnUse"><path d="M18 8l2.5 7 7 2.5-7 2.5-2.5 7-2.5-7-7-2.5 7-2.5z" fill="#fff" opacity=".65"/></pattern>
@@ -31,4 +55,79 @@
  <path d="M122 338L360 457L598 338L598 351L360 470L122 351Z" fill="#cbb8d5"/>
  <path d="M360 60V220" stroke="#c9b4d6" stroke-width="4"/>
  <path d="M122 178L360 60L598 178" fill="none" stroke="#fffdf8" stroke-width="12" stroke-linejoin="round"/>
- </g></svg><div class="mr-floor" id="mrFloor" aria-label="가구를 배치하는 방 바닥"></div></div></div><div class="mr-panel"><div class="mr-heading">✧ ✦ 아이템샵</div><p class="mr-help">가구를 누르면 방에 추가돼요. 가구를 드래그해서 원하는 위치로 옮겨 보세요!<br>첫 버전의 모든 가구는 무료예요 ♡</p><div class="mr-shop" id="mrShop"></div></div></div></section><p class="mr-status" id="mrStatus" role="status" aria-live="polite"></p></div></div><footer>💙 건욱이 애정하기 💙</footer></main></div><script src="config.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script><script src="miniroom.js"></script></body></html>
+ </g></svg><div class="mr-floor" id="mrFloor" aria-label="가구를 배치하는 방 바닥"></div></div></div><div class="mr-panel"><div class="mr-heading">✦ 아이템샵</div><nav class="mr-shop-nav" id="mrShopNav" aria-label="아이템 종류"></nav><div class="mr-shop-meta"><span id="mrShopCount">전체 아이템</span><span>모든 아이템 무료 ♡</span></div><div class="mr-shop" id="mrShop"></div><div class="mr-shop-pager" id="mrShopPager"></div><p class="mr-help">가구는 클릭하면 방에 추가돼요. 벽지와 타일은 클릭하면 바로 적용돼요. ♡</p></div></div></section><p class="mr-status" id="mrStatus" role="status" aria-live="polite"></p></div></div><footer>💙 건욱이 애정하기 💙</footer></main></div><script src="config.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script><script src="miniroom.js"></script><script>
+/* 기존 miniroom.js는 수정하지 않고 상점 UI 및 벽지/타일만 확장 */
+(()=>{
+'use strict';
+const shop=document.getElementById('mrShop'),nav=document.getElementById('mrShopNav'),pager=document.getElementById('mrShopPager'),count=document.getElementById('mrShopCount');
+const art=document.querySelector('#mrScene .mr-room-art');
+if(!shop||!nav||!art)return;
+const originals=Array.from(shop.querySelectorAll('.mr-shop-item'));
+const names=['리본 침대','곰돌이','작은 화분','구름 소파','별 조명','작은 책상','선물 상자','고양이'];
+const cats=['가구','캐릭터','소품','가구','소품','가구','소품','캐릭터'];
+const products=originals.map((button,i)=>({name:names[i]||'가구',cat:cats[i]||'가구',button,kind:'furniture'}));
+const skins=[
+ {id:'wall-cream',cat:'벽지',name:'크림 벽지',kind:'wall',base:'#fff9ef',side:'#f5f0ed',trim:'#eee5f0'},
+ {id:'wall-pink',cat:'벽지',name:'딸기우유 벽지',kind:'wall',base:'#ffe7ef',side:'#f7dbe8',trim:'#efd4e6'},
+ {id:'wall-lavender',cat:'벽지',name:'라벤더 벽지',kind:'wall',base:'#f1e6ff',side:'#e7d9f7',trim:'#ded0ef'},
+ {id:'wall-blue',cat:'벽지',name:'하늘빛 벽지',kind:'wall',base:'#e6f3ff',side:'#dcecf9',trim:'#d6e6f6'},
+ {id:'wall-mint',cat:'벽지',name:'민트 벽지',kind:'wall',base:'#e6f7ec',side:'#d8eee2',trim:'#d3e8dc'},
+ {id:'wall-peach',cat:'벽지',name:'복숭아 벽지',kind:'wall',base:'#ffebde',side:'#f8e1d6',trim:'#f0d8d6'},
+ {id:'tile-wood',cat:'바닥 타일',name:'크림 원목',kind:'tile',base:'#f7eddb',line:'#e6d6c5'},
+ {id:'tile-pink',cat:'바닥 타일',name:'핑크 타일',kind:'tile',base:'#fbe2ed',line:'#e5bfd3'},
+ {id:'tile-lavender',cat:'바닥 타일',name:'라벤더 타일',kind:'tile',base:'#eee2fb',line:'#d5c1e9'},
+ {id:'tile-mint',cat:'바닥 타일',name:'민트 타일',kind:'tile',base:'#e3f5eb',line:'#c2dfd1'},
+ {id:'tile-blue',cat:'바닥 타일',name:'하늘 타일',kind:'tile',base:'#e2f1ff',line:'#c3dbea'},
+ {id:'tile-choco',cat:'바닥 타일',name:'코코아 원목',kind:'tile',base:'#e7cdb7',line:'#cda98f'}
+];
+let selected='전체 아이템',page=1;
+const perPage=12;
+const wallPaths=Array.from(art.querySelectorAll('g > path')).filter(p=>p.getAttribute('d')?.startsWith('M122 178L360 60')||p.getAttribute('d')?.startsWith('M360 60L598 178'));
+const wains=Array.from(art.querySelectorAll('g > path')).filter(p=>p.getAttribute('d')?.startsWith('M122 298L360 180')||p.getAttribute('d')?.startsWith('M360 180L598 298'));
+const wood=art.querySelector('#mrWood');
+const woodRect=wood?.querySelector('rect');
+const woodLines=wood?.querySelectorAll('path');
+const all=products.concat(skins);
+const tabs=['전체 아이템','가구','소품','캐릭터','벽지','바닥 타일'];
+const storageKey='gunwook-miniroom-decoration-v1';
+let applied={wall:'wall-cream',tile:'tile-wood'};
+try{const stored=JSON.parse(localStorage.getItem(storageKey)||'{}');if(skins.some(s=>s.id===stored.wall))applied.wall=stored.wall;if(skins.some(s=>s.id===stored.tile))applied.tile=stored.tile;}catch{}
+function apply(){
+ const wall=skins.find(s=>s.id===applied.wall),tile=skins.find(s=>s.id===applied.tile);
+ if(wallPaths[0])wallPaths[0].setAttribute('fill',wall.base);
+ if(wallPaths[1])wallPaths[1].setAttribute('fill',wall.side);
+ if(wains[0])wains[0].setAttribute('fill',wall.trim);
+ if(wains[1])wains[1].setAttribute('fill',wall.trim);
+ if(woodRect)woodRect.setAttribute('fill',tile.base);
+ woodLines?.forEach(p=>p.setAttribute('stroke',tile.line));
+ try{localStorage.setItem(storageKey,JSON.stringify(applied));}catch{}
+}
+function decorate(btn,p){
+ btn.classList.add('mr-shop-item');
+ btn.setAttribute('aria-label',p.name+' 무료');
+ let ico=btn.querySelector('.mr-shop-icon');
+ if(!ico){ico=document.createElement('span');ico.className='mr-shop-icon';btn.prepend(ico);}
+ if(p.kind!=='furniture'){
+  ico.replaceChildren();const swatch=document.createElement('span');swatch.className='mr-swatch';
+  swatch.style.background=p.kind==='wall'?`linear-gradient(135deg,${p.base} 50%,${p.side} 50%)`:`repeating-linear-gradient(0deg,transparent 0 16px,${p.line} 17px 18px),repeating-linear-gradient(90deg,${p.base} 0 17px,${p.line} 18px 19px)`;
+  ico.append(swatch);
+  btn.addEventListener('click',()=>{applied[p.kind]=p.id;apply();render();document.getElementById('mrStatus').textContent='♡ '+p.name+' 적용 완료! (현재 브라우저에 저장돼요)';});
+ }
+ let name=btn.querySelector('.mr-product-name');if(!name){name=document.createElement('span');name.className='mr-product-name';btn.append(name);}name.textContent=p.name;
+ const price=document.createElement('span');price.className='mr-product-price';price.textContent='0 코인';
+ const free=document.createElement('span');free.className='mr-product-free';free.textContent='FREE';
+ btn.append(price,free);
+}
+products.forEach(p=>{p.button.querySelectorAll('.mr-shop-item > span:not(.mr-shop-icon)').forEach(n=>n.remove());decorate(p.button,p);});
+skins.forEach(p=>{const b=document.createElement('button');b.type='button';p.button=b;decorate(b,p);});
+function render(){
+ nav.replaceChildren();tabs.forEach(tab=>{const b=document.createElement('button');b.type='button';b.className='mr-shop-tab';b.textContent=tab;b.setAttribute('aria-selected',String(selected===tab));b.onclick=()=>{selected=tab;page=1;render();};nav.append(b);});
+ const visible=all.filter(p=>selected==='전체 아이템'||p.cat===selected);
+ const pages=Math.max(1,Math.ceil(visible.length/perPage));page=Math.min(page,pages);
+ count.textContent=selected+' · '+visible.length+'개';shop.replaceChildren();
+ visible.slice((page-1)*perPage,page*perPage).forEach(p=>{p.button.classList.toggle('is-applied',p.kind!=='furniture'&&applied[p.kind]===p.id);shop.append(p.button);});
+ pager.replaceChildren();if(pages>1)for(let i=1;i<=pages;i++){const b=document.createElement('button');b.type='button';b.textContent=i;b.setAttribute('aria-current',i===page?'page':'false');b.onclick=()=>{page=i;render();};pager.append(b);}
+}
+apply();render();
+})();
+</script></body></html>
