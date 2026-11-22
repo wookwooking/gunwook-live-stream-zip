@@ -10,7 +10,7 @@ document.body.append(widget);
 const $=id=>widget.querySelector('#'+id),audio=new Audio();audio.preload='none';audio.volume=.35;let current=0;let userPaused=false;let firstInteractionHandled=false;
 const safeTracks=TRACKS.filter(t=>t&&typeof t.file==='string'&&t.file.trim()&&typeof t.title==='string');
 const name=()=>safeTracks[current]?safeTracks[current].title+(safeTracks[current].artist?' — '+safeTracks[current].artist:''):'음악을 추가해 주세요 ♡';
-function sync(){ $('bgmName').textContent=name();$('bgmPlay').textContent=audio.paused?'▶ 재생':'Ⅱ 정지';$('bgmPlay').setAttribute('aria-label',audio.paused?'재생':'일시정지');if(!audio.error)$('bgmState').textContent=audio.paused?'일시정지':'♪ 재생 중';[...$('bgmPlaylist').querySelectorAll('button')].forEach((b,i)=>b.setAttribute('aria-current',String(i===current)))}
+function sync(){ $('bgmName').textContent=name();$('bgmPlay').textContent=audio.paused?'▶':'Ⅱ';$('bgmPlay').setAttribute('aria-label',audio.paused?'재생':'일시정지');if(!audio.error)$('bgmState').textContent=audio.paused?'일시정지':'♪ 재생 중';[...$('bgmPlaylist').querySelectorAll('button')].forEach((b,i)=>b.setAttribute('aria-current',String(i===current)))}
 function load(i){if(!safeTracks.length)return;current=(i+safeTracks.length)%safeTracks.length;audio.src=safeTracks[current].file;audio.load();sync()}
 async function play(){if(!safeTracks.length){$('bgmState').textContent='먼저 MP3 파일을 등록해 주세요';return}if(!audio.src)load(current);try{await audio.play();sync()}catch(e){$('bgmState').textContent='음악 파일을 확인해 주세요';sync()}}
 function step(delta){if(!safeTracks.length)return;const wasPlaying=!audio.paused;load(current+delta);if(wasPlaying)play()}
