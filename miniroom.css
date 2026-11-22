@@ -54,3 +54,12 @@
 #miniroomApp.mr-locked .mr-rotate-icon{display:none!important;}
 #miniroomApp.mr-editing #mrBearCharacter{display:none;}
 #miniroomApp.mr-locked #mrEditLayout{background:#efe3fb;border-color:#a98ac8;color:#805aa0;font-weight:700;}
+
+/* 가구가 배경에 가려지지 않도록 레이어 순서 수정 */
+#mrEditor .mr-room-art{z-index:0;pointer-events:none;}
+#mrEditor .mr-floor{z-index:2;pointer-events:none;}
+#mrEditor .mr-furniture{pointer-events:auto;}
+#miniroomApp.mr-locked .mr-furniture{pointer-events:none;}
+#mrEditor .mr-character-layer{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none;overflow:visible;}
+#mrEditor .mr-character-layer #mrBearCharacter{pointer-events:all;}
+#miniroomApp.mr-editing .mr-character-layer{display:none;}
