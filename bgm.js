@@ -34,6 +34,22 @@ const TRACKS = [
 const widget=document.createElement('aside');widget.className='bgm-widget';widget.setAttribute('aria-label','배경음악 플레이어');
 widget.innerHTML=`<div class="bgm-window"><div class="bgm-titlebar"><span>♫ GUNWOOK MUSIC PLAYER</span><button type="button" id="bgmMinimize" aria-label="음악 플레이어 접기" aria-expanded="true">−</button></div><div class="bgm-content"><div class="bgm-track"><span class="bgm-disc" aria-hidden="true">♫</span><div class="bgm-track-info"><div class="bgm-name" id="bgmName">음악을 추가해 주세요 ♡</div><div class="bgm-state" id="bgmState" role="status">일시정지</div></div></div><div class="bgm-controls"><button type="button" id="bgmPrev" aria-label="이전 곡">⏮</button><button type="button" class="bgm-play" id="bgmPlay" aria-label="재생">▶</button><button type="button" id="bgmNext" aria-label="다음 곡">⏭</button></div><label class="bgm-volume">🔉 <input type="range" id="bgmVolume" min="0" max="100" value="35" aria-label="음량"><span id="bgmVolumeValue">35%</span></label><button type="button" class="bgm-list-toggle" id="bgmPlaylistToggle" aria-expanded="false">☷ PLAYLIST ▾</button><ol class="bgm-list" id="bgmPlaylist" hidden></ol></div></div>`;
 document.body.append(widget);
+// Mobile-only floating music button: show/hide the player without pausing audio.
+const mobileMusicToggle=document.createElement('button');
+mobileMusicToggle.type='button';
+mobileMusicToggle.className='bgm-mobile-toggle';
+mobileMusicToggle.textContent='🎵';
+mobileMusicToggle.setAttribute('aria-label','음악 플레이어 열기');
+mobileMusicToggle.setAttribute('aria-expanded','false');
+document.body.append(mobileMusicToggle);
+function setMobilePlayerOpen(open){
+  widget.classList.toggle('bgm-mobile-open',open);
+  mobileMusicToggle.setAttribute('aria-expanded',String(open));
+  mobileMusicToggle.setAttribute('aria-label',open?'음악 플레이어 닫기':'음악 플레이어 열기');
+  mobileMusicToggle.textContent=open?'×':'🎵';
+  if(open)requestAnimationFrame(keepWindowVisible);
+}
+mobileMusicToggle.addEventListener('click',()=>setMobilePlayerOpen(!widget.classList.contains('bgm-mobile-open')));
 const $=id=>widget.querySelector('#'+id),audio=new Audio();audio.preload='none';audio.volume=.35;let current=0;let userPaused=false;let firstInteractionHandled=false;
 const safeTracks=TRACKS.filter(t=>t&&typeof t.file==='string'&&t.file.trim()&&typeof t.title==='string');
 const name=()=>safeTracks[current]?safeTracks[current].title+(safeTracks[current].artist?' — '+safeTracks[current].artist:''):'음악을 추가해 주세요 ♡';
@@ -107,7 +123,7 @@ audio.addEventListener('ended',()=>{if(safeTracks.length){load(current+1);play()
 // Interactions with the player itself retain their normal meaning; manual pause never restarts automatically.
 function startOnFirstInteraction(e){
   if(firstInteractionHandled||userPaused||!safeTracks.length)return;
-  if(widget.contains(e.target))return;
+  if(widget.contains(e.target)||mobileMusicToggle.contains(e.target))return;
   firstInteractionHandled=true;
   play();
 }
