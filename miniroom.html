@@ -138,6 +138,11 @@ apply();render();
  const svg=bear?.ownerSVGElement;
  if(!bear||!svg)return;
  const key='gunwook-bear-position-v1', W=64,H=79;
+ const idleSprite='miniroom-assets/bear-z.png';
+ const walkSprites=[1,2,3,4].map(n=>'miniroom-assets/bear-walk-'+n+'.png');
+ walkSprites.forEach(url=>{const img=new Image();img.src=url;});
+ let frame=-1;
+ function setFrame(n){if(frame===n)return;frame=n;bear.setAttribute('href',n<0?idleSprite:walkSprites[n]);}
  const inside=(cx,foot)=>foot>=240&&foot<=447&&Math.abs(cx-360)<=Math.max(0,238*Math.min((foot-220)/118,(457-foot)/119)-12);
  const floor=Array.from(svg.querySelectorAll('path')).find(p=>p.getAttribute('d')==='M122 338L360 220L598 338L360 457Z'&&p.getAttribute('fill')==='url(#mrWood)');
  let x=328,y=284,dragging=false,dx=0,dy=0,raf=0,walking=false;
@@ -145,7 +150,7 @@ apply();render();
  function save(){try{localStorage.setItem(key,JSON.stringify({x,y}));}catch{}}
  function render(bob=0){bear.setAttribute('x',x);bear.setAttribute('y',y+bob);}
  function point(e){const pt=svg.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;const m=svg.getScreenCTM();return m?pt.matrixTransform(m.inverse()):null;}
- function stop(){if(raf)cancelAnimationFrame(raf);raf=0;walking=false;render();}
+ function stop(){if(raf)cancelAnimationFrame(raf);raf=0;walking=false;setFrame(-1);render();}
  function walkTo(cx,foot){
    if(!inside(cx,foot))return;
    stop();const tx=cx-W/2,ty=foot-H,sx=x,sy=y,dist=Math.hypot(tx-sx,ty-sy);
@@ -153,7 +158,8 @@ apply();render();
    const duration=Math.max(280,dist/0.105),start=performance.now();walking=true;
    function tick(now){const t=Math.min(1,(now-start)/duration);x=sx+(tx-sx)*t;y=sy+(ty-sy)*t;
      // 픽셀 캐릭터가 쪼르르 걷는 느낌: 2px 위아래 발걸음
-     render(t<1?-(Math.sin(t*dist/5)**2)*2:0);
+     if(t<1){setFrame(Math.floor((now-start)/145)%4);}else{setFrame(-1);}
+     render(t<1?-(Math.sin(t*dist/5)**2)*1.2:0);
      if(t<1&&walking)raf=requestAnimationFrame(tick);else{raf=0;walking=false;render();save();}
    }
    raf=requestAnimationFrame(tick);
