@@ -55,7 +55,7 @@ const safeTracks=TRACKS.filter(t=>t&&typeof t.file==='string'&&t.file.trim()&&ty
 const name=()=>safeTracks[current]?safeTracks[current].title+(safeTracks[current].artist?' — '+safeTracks[current].artist:''):'음악을 추가해 주세요 ♡';
 function sync(){ $('bgmName').textContent=name();$('bgmPlay').textContent=audio.paused?'▶':'Ⅱ';$('bgmPlay').setAttribute('aria-label',audio.paused?'재생':'일시정지');if(!audio.error)$('bgmState').textContent=audio.paused?'일시정지':'♪ 재생 중';[...$('bgmPlaylist').querySelectorAll('button')].forEach((b,i)=>b.setAttribute('aria-current',String(i===current)))}
 function load(i){if(!safeTracks.length)return;current=(i+safeTracks.length)%safeTracks.length;audio.src=safeTracks[current].file;audio.load();sync()}
-async function play(){if(!safeTracks.length){$('bgmState').textContent='먼저 MP3 파일을 등록해 주세요';return}if(!audio.src)load(current);try{await audio.play();sync()}catch(e){$('bgmState').textContent='음악 파일을 확인해 주세요';sync()}}
+async function play(){if(!safeTracks.length){$('bgmState').textContent='먼저 MP3 파일을 등록해 주세요';return false}if(!audio.src)load(current);try{await audio.play();sync();return true}catch(e){$('bgmState').textContent='재생 버튼을 눌러 음악을 시작해 주세요';sync();return false}}
 function step(delta){if(!safeTracks.length)return;const wasPlaying=!audio.paused;load(current+delta);if(wasPlaying)play()}
 $('bgmPlay').onclick=()=>{if(audio.paused){userPaused=false;play()}else{userPaused=true;audio.pause();sync()}};$('bgmPrev').onclick=()=>step(-1);$('bgmNext').onclick=()=>step(1);
 $('bgmVolume').oninput=e=>{audio.volume=Number(e.target.value)/100;$('bgmVolumeValue').textContent=e.target.value+'%'};
@@ -122,13 +122,16 @@ audio.addEventListener('ended',()=>{if(safeTracks.length){load(current+1);play()
 // Start BGM on the visitor's first interaction with the page, if allowed by the browser.
 // Interactions with the player itself retain their normal meaning; manual pause never restarts automatically.
 function startOnFirstInteraction(e){
-  if(firstInteractionHandled||userPaused||!safeTracks.length)return;
+  if(firstInteractionHandled||userPaused||!safeTracks.length||!audio.paused)return;
   if(widget.contains(e.target)||mobileMusicToggle.contains(e.target))return;
-  firstInteractionHandled=true;
-  play();
+  // Use the completed tap/click: mobile browsers may reject audio.play() on pointerdown.
+  // Only mark success after playback actually begins, so blocked attempts can retry.
+  play().then(started=>{if(started)firstInteractionHandled=true});
 }
-document.addEventListener('pointerdown',startOnFirstInteraction,{capture:true});
-document.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){startOnFirstInteraction(e)}},{capture:true});
+document.addEventListener('click',startOnFirstInteraction,{capture:true});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'||e.key===' ')startOnFirstInteraction(e);
+},{capture:true});
 // A YouTube iframe may receive focus when clicked; pause BGM to avoid competing sound.
 window.addEventListener('blur',()=>{setTimeout(()=>{if(document.activeElement?.tagName==='IFRAME'&&!audio.paused){audio.pause();sync()}},0)});
 })();
