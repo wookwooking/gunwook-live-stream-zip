@@ -38,7 +38,19 @@ document.body.append(widget);
 const mobileMusicToggle=document.createElement('button');
 mobileMusicToggle.type='button';
 mobileMusicToggle.className='bgm-mobile-toggle';
-mobileMusicToggle.innerHTML='💿';
+
+const cdIcon = `<svg xmlns="http://www.w3.org/2000/svg"
+  width="23" height="23" viewBox="0 0 24 24"
+  fill="none" stroke="currentColor"
+  stroke-width="1.7" stroke-linecap="round"
+  stroke-linejoin="round" aria-hidden="true">
+  <circle cx="12" cy="12" r="9"/>
+  <circle cx="12" cy="12" r="2.2"/>
+  <path d="M7.7 6.4a7 7 0 0 1 4.3-1.5"/>
+  <path d="M16.3 17.6a7 7 0 0 1-4.3 1.5"/>
+</svg>`;
+mobileMusicToggle.innerHTML = cdIcon;
+
 mobileMusicToggle.setAttribute('aria-label','음악 플레이어 열기');
 mobileMusicToggle.setAttribute('aria-expanded','false');
 document.body.append(mobileMusicToggle);
@@ -46,7 +58,9 @@ function setMobilePlayerOpen(open){
   widget.classList.toggle('bgm-mobile-open',open);
   mobileMusicToggle.setAttribute('aria-expanded',String(open));
   mobileMusicToggle.setAttribute('aria-label',open?'음악 플레이어 닫기':'음악 플레이어 열기');
-mobileMusicToggle.innerHTML=open?'×':'💿';
+
+mobileMusicToggle.innerHTML = open ? '×' : cdIcon;
+
   if(open)requestAnimationFrame(keepWindowVisible);
 }
 mobileMusicToggle.addEventListener('click',()=>setMobilePlayerOpen(!widget.classList.contains('bgm-mobile-open')));
