@@ -55,6 +55,7 @@
  <path d="M122 338L360 457L598 338L598 351L360 470L122 351Z" fill="#cbb8d5"/>
  <path d="M360 60V220" stroke="#c9b4d6" stroke-width="4"/>
  <path d="M122 178L360 60L598 178" fill="none" stroke="#fffdf8" stroke-width="12" stroke-linejoin="round"/>
+ <image id="mrBearCharacter" href="miniroom-assets/bear-z.png" x="328" y="284" width="64" height="79" preserveAspectRatio="xMidYMid meet" style="cursor:grab;pointer-events:all;image-rendering:pixelated" aria-label="곰돌이 캐릭터" />
  </g></svg><div class="mr-floor" id="mrFloor" aria-label="가구를 배치하는 방 바닥"></div></div></div><div class="mr-panel"><div class="mr-heading">✦ 아이템샵</div><nav class="mr-shop-nav" id="mrShopNav" aria-label="아이템 종류"></nav><div class="mr-shop-meta"><span id="mrShopCount">전체 아이템</span><span>모든 아이템 무료 ♡</span></div><div class="mr-shop" id="mrShop"></div><div class="mr-shop-pager" id="mrShopPager"></div><p class="mr-help">가구는 클릭하면 방에 추가돼요. 벽지와 타일은 클릭하면 바로 적용돼요. ♡</p></div></div></section><p class="mr-status" id="mrStatus" role="status" aria-live="polite"></p></div></div><footer>💙 건욱이 애정하기 💙</footer></main></div><script src="config.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script><script src="miniroom.js"></script><script>
 /* 기존 miniroom.js는 수정하지 않고 상점 UI 및 벽지/타일만 확장 */
 (()=>{
@@ -129,5 +130,24 @@ function render(){
  pager.replaceChildren();if(pages>1)for(let i=1;i<=pages;i++){const b=document.createElement('button');b.type='button';b.textContent=i;b.setAttribute('aria-current',i===page?'page':'false');b.onclick=()=>{page=i;render();};pager.append(b);}
 }
 apply();render();
+})();
+</script><script>
+/* 곰돌이 위치 조절: 다른 가구/상점 코드는 변경하지 않음 */
+(()=>{
+ const bear=document.getElementById('mrBearCharacter');
+ const svg=bear?.ownerSVGElement;
+ if(!bear||!svg)return;
+ const key='gunwook-bear-position-v1';
+ const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+ const inside=(x,y)=>{const t=(y-220)/237;return y>=240&&y<=447&&Math.abs(x-360)<=238*Math.min((y-220)/118,(457-y)/119);};
+ let x=328,y=284;
+ try{const p=JSON.parse(localStorage.getItem(key)||'null');if(p&&Number.isFinite(p.x)&&Number.isFinite(p.y)&&inside(p.x+32,p.y+79)){x=p.x;y=p.y;}}catch{}
+ const update=()=>{bear.setAttribute('x',x);bear.setAttribute('y',y);};update();
+ let dragging=false,dx=0,dy=0;
+ function point(e){const pt=svg.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;const c=svg.getScreenCTM();return c?pt.matrixTransform(c.inverse()):null;}
+ bear.addEventListener('pointerdown',e=>{const p=point(e);if(!p)return;dragging=true;dx=p.x-x;dy=p.y-y;bear.setPointerCapture(e.pointerId);e.preventDefault();});
+ bear.addEventListener('pointermove',e=>{if(!dragging)return;const p=point(e);if(!p)return;const nx=p.x-dx,ny=p.y-dy;if(inside(nx+32,ny+79)){x=nx;y=ny;update();}});
+ function finish(){if(!dragging)return;dragging=false;try{localStorage.setItem(key,JSON.stringify({x,y}));}catch{}}
+ bear.addEventListener('pointerup',finish);bear.addEventListener('pointercancel',finish);
 })();
 </script></body></html>
