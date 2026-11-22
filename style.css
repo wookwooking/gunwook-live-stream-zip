@@ -259,3 +259,31 @@ footer { padding: 10px !important; }
     cursor:url('assets/puppy-cursor.png') 32 32,auto !important;
   }
 }
+
+
+/* Mobile music launcher: small floating icon, player only appears when opened. */
+.bgm-mobile-toggle { display:none; }
+@media (max-width:600px) {
+  .bgm-widget { display:none !important; }
+  .bgm-widget.bgm-mobile-open { display:block !important; }
+  .bgm-mobile-toggle {
+    display:grid !important;
+    place-items:center;
+    position:fixed;
+    right:12px;
+    bottom:12px;
+    z-index:9992;
+    width:43px;
+    height:43px;
+    padding:0;
+    border:2px solid #a1a8cf;
+    border-radius:9px;
+    background:linear-gradient(135deg,#fff9fd,#eadcf8) !important;
+    box-shadow:2px 3px 0 #b5b9d6;
+    font-size:21px;
+    line-height:1;
+    color:#7476a5;
+    touch-action:manipulation;
+  }
+  .bgm-mobile-toggle:hover { background:linear-gradient(135deg,#fff,#f6e4f4) !important; }
+}
