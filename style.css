@@ -130,3 +130,23 @@ footer { padding: 10px !important; }
   font-weight: 600;
   box-shadow: 1px 1px 0 #a2a8c9;
 }
+
+/* 닉네임 앞 미니 건빵 아이콘 */
+.guestbook-biscuit-name::before {
+  content: '∴';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 13px;
+  height: 13px;
+  margin-right: 8px;
+  vertical-align: -2px;
+  border: 1px solid #bc916b;
+  border-radius: 3px;
+  background: #e8c49b;
+  color: #a77850;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+  box-shadow: inset 1px 1px #f9dfb8;
+}
