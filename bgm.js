@@ -38,7 +38,7 @@ document.body.append(widget);
 const mobileMusicToggle=document.createElement('button');
 mobileMusicToggle.type='button';
 mobileMusicToggle.className='bgm-mobile-toggle';
-mobileMusicToggle.textContent='🎵';
+mobileMusicToggle.innerHTML='💿';
 mobileMusicToggle.setAttribute('aria-label','음악 플레이어 열기');
 mobileMusicToggle.setAttribute('aria-expanded','false');
 document.body.append(mobileMusicToggle);
@@ -46,7 +46,7 @@ function setMobilePlayerOpen(open){
   widget.classList.toggle('bgm-mobile-open',open);
   mobileMusicToggle.setAttribute('aria-expanded',String(open));
   mobileMusicToggle.setAttribute('aria-label',open?'음악 플레이어 닫기':'음악 플레이어 열기');
-  mobileMusicToggle.textContent=open?'×':'🎵';
+mobileMusicToggle.innerHTML=open?'×':'💿';
   if(open)requestAnimationFrame(keepWindowVisible);
 }
 mobileMusicToggle.addEventListener('click',()=>setMobilePlayerOpen(!widget.classList.contains('bgm-mobile-open')));
