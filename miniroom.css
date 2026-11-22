@@ -39,3 +39,7 @@
 #mrEditor .mr-furniture .mr-rotate-icon{display:none;align-items:center;justify-content:center;line-height:1;padding:0;box-sizing:border-box;}
 #mrEditor .mr-furniture.is-selected .mr-rotate-icon{display:flex;}
 #mrEditor .mr-furniture .mr-rotate-icon svg{display:block;flex:none;}
+
+/* 회전 버튼은 가구 버튼과 분리해 클릭이 확실히 작동하도록 함 */
+#mrEditor .mr-floor > .mr-rotate-icon{display:flex;position:absolute;align-items:center;justify-content:center;width:24px;height:24px;padding:0;border:1px solid #b6a2d1;border-radius:50%;background:#fffafd;color:#8c6aa9;cursor:pointer;box-shadow:0 2px 5px #58496d33;transform:translate(-50%,-50%);pointer-events:auto;}
+#mrEditor .mr-floor > .mr-rotate-icon svg{display:block;flex:none;}
