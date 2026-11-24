@@ -64,7 +64,7 @@ const shop=document.getElementById('mrShop'),nav=document.getElementById('mrShop
 const art=document.querySelector('#mrScene .mr-room-art');
 if(!shop||!nav||!art)return;
 const originals=Array.from(shop.querySelectorAll('.mr-shop-item'));
-const names=['2층침대','그로밋 인형','꽃다발','구름 소파','별 조명','작은 책상','선물 상자','기아'];
+const names=['2층 벙커침대','그로밋 인형','꽃다발','구름 소파','별 조명','작은 책상','선물 상자','기아'];
 const cats=['가구','캐릭터','소품','가구','소품','가구','소품','캐릭터'];
 const products=originals.map((button,i)=>({name:names[i]||'가구',cat:cats[i]||'가구',button,kind:'furniture'}));
 const skins=[
