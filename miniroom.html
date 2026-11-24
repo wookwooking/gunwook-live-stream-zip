@@ -41,12 +41,13 @@
 @media(max-width:600px){#mrEditor .mr-furniture.mr-type-bear{width:37.5px;height:37.5px}}
 
 /* Bed size matched to reference room: 275 / 824 of room width. */
-#mrEditor .mr-furniture.mr-type-bed {width:22.25%;height:auto;aspect-ratio:968/918;}
+#mrEditor .mr-furniture.mr-type-bed {width:27.8125%;height:auto;aspect-ratio:968/918;}
 
 /* Smooth downsampling for detailed small props only. */
 #mrEditor .mr-furniture img[src*="/bear.png"],#mrEditor .mr-furniture img[src*="/cat.png"],#mrEditor .mr-furniture img[src*="/plant.png"],#mrEditor .mr-shop-icon img[src*="/bear.png"],#mrEditor .mr-shop-icon img[src*="/cat.png"],#mrEditor .mr-shop-icon img[src*="/plant.png"]{image-rendering:auto;}
 #mrEditor .mr-furniture.mr-type-chicken-ticket{width:13%;height:auto;aspect-ratio:1.14;transform:translate(-50%,-50%);filter:drop-shadow(1px 2px 1px #64566c44)}
 #mrEditor .mr-type-chicken-ticket img{image-rendering:auto;}
+#mrEditor .mr-furniture.mr-type-bed img,#mrEditor .mr-shop-icon img[src*="/bed.png"]{image-rendering:auto;}
 </style></head><body><div class="desktop"><main class="window"><div class="titlebar"><span>🏠 GUNWOOK MINI ROOM</span><div class="window-controls"><span>_</span><span>□</span><span>×</span></div></div><nav class="toolbar"><button type="button" onclick="location.href='index.html'">⌂ 홈으로 돌아가기</button><span class="toolbar-note">♡ MINI ROOM</span></nav><div class="mr-page" id="miniroomApp"><div class="mr-panel"><div class="mr-heading">♡ GUNWOOK MINI ROOM</div><section id="mrWelcome" class="mr-welcome"><h2>♡ 나만의 미니룸 ♡</h2><p>닉네임만 정하면 바로 방을 꾸밀 수 있어요!<br>가구를 배치하고 나만의 공간을 만들어 보세요.</p><input id="mrNickname" maxlength="20" placeholder="닉네임 (2~20자)" autocomplete="nickname"><button class="mr-action" id="mrStart" type="button">♡ 내 방 만들기</button><p class="mr-note">현재 기기의 브라우저에 로그인 정보가 저장됩니다.<br>계정 연결 전에는 브라우저 데이터 삭제 시 방에 접근하지 못할 수 있어요.</p></section><section id="mrEditor" hidden><div class="mr-top"><h2 id="mrNicknameLabel">나의 방</h2><div class="mr-top-actions"><button id="mrRename" type="button">닉네임 변경</button><button id="mrEditLayout" type="button">♡ 홈 꾸미기</button><button id="mrUndo" type="button" disabled>↶ 이전으로</button><button id="mrResetFurniture" type="button">가구 전체 치우기</button><button id="mrRemove" type="button" disabled>선택한 가구 치우기</button><button id="mrSaveLayout" type="button" disabled>♡ 배치 저장하기</button><button id="mrAccount" type="button">계정 연결 안내</button></div></div><div class="mr-layout"><div class="mr-stage"><div class="mr-scene" id="mrScene"><svg class="mr-room-art" viewBox="0 0 720 510" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
 <defs>
  <pattern id="mrStars" width="58" height="58" patternUnits="userSpaceOnUse"><path d="M18 8l2.5 7 7 2.5-7 2.5-2.5 7-2.5-7-7-2.5 7-2.5z" fill="#fff" opacity=".65"/></pattern>
