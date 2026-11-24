@@ -70,7 +70,7 @@
  <path d="M360 60V220" stroke="#c9b4d6" stroke-width="4"/>
  <path d="M122 178L360 60L598 178" fill="none" stroke="#fffdf8" stroke-width="12" stroke-linejoin="round"/>
 
- </g></svg><div class="mr-floor" id="mrFloor" aria-label="가구를 배치하는 방 바닥"></div><svg class="mr-character-layer" viewBox="0 0 720 510" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" aria-label="강아지 캐릭터 레이어"> <image id="mrBearCharacter" href="miniroom-assets/bear-z.png" x="328" y="284" width="64" height="79" preserveAspectRatio="xMidYMid meet" style="cursor:grab;pointer-events:all;image-rendering:pixelated" aria-label="강아지 캐릭터" /></svg></div></div><div class="mr-panel"><div class="mr-heading">✦ 아이템샵</div><nav class="mr-shop-nav" id="mrShopNav" aria-label="아이템 종류"></nav><div class="mr-shop-meta"><span id="mrShopCount">전체 아이템</span><span>모든 아이템 무료 ♡</span></div><div class="mr-shop" id="mrShop"></div><div class="mr-shop-pager" id="mrShopPager"></div><p class="mr-help">가구는 클릭하면 방에 추가돼요. 벽지와 타일은 ♡ 홈 꾸미기 상태에서만 변경할 수 있어요. ♡</p></div></div></section><p class="mr-status" id="mrStatus" role="status" aria-live="polite"></p></div></div><footer>💙 건욱이 애정하기 💙</footer></main></div><script src="config.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script><script src="miniroom.js?v=items-20261124-wall1"></script><script>
+ </g></svg><div class="mr-floor" id="mrFloor" aria-label="가구를 배치하는 방 바닥"></div><svg class="mr-character-layer" viewBox="0 0 720 510" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" aria-label="강아지 캐릭터 레이어"> <image id="mrBearCharacter" href="miniroom-assets/bear-z.png" x="328" y="284" width="64" height="79" preserveAspectRatio="xMidYMid meet" style="cursor:grab;pointer-events:all;image-rendering:pixelated" aria-label="강아지 캐릭터" /></svg></div></div><div class="mr-panel"><div class="mr-heading">✦ 아이템샵</div><nav class="mr-shop-nav" id="mrShopNav" aria-label="아이템 종류"></nav><div class="mr-shop-meta"><span id="mrShopCount">전체 아이템</span><span>모든 아이템 무료 ♡</span></div><div class="mr-shop" id="mrShop"></div><div class="mr-shop-pager" id="mrShopPager"></div><p class="mr-help">가구는 클릭하면 방에 추가돼요. 벽지와 타일은 ♡ 홈 꾸미기 상태에서만 변경할 수 있어요. ♡</p></div></div></section><p class="mr-status" id="mrStatus" role="status" aria-live="polite"></p></div></div><footer>💙 건욱이 애정하기 💙</footer></main></div><script src="config.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script><script src="miniroom.js?v=items-20261124-figure1"></script><script>
 /* 기존 miniroom.js는 수정하지 않고 상점 UI 및 벽지/타일만 확장 */
 (()=>{
 'use strict';
@@ -78,7 +78,7 @@ const shop=document.getElementById('mrShop'),nav=document.getElementById('mrShop
 const art=document.querySelector('#mrScene .mr-room-art');
 if(!shop||!nav||!art)return;
 const originals=Array.from(shop.querySelectorAll('.mr-shop-item'));
-const names=['2층 벙커침대','그로밋 인형','꽃다발','구름 소파','별 조명','작은 책상','선물 상자','기아','1인 1닭 치킨 이용권'];
+const names=['2층 벙커침대','그로밋 인형','헬창 꼬부기','구름 소파','별 조명','작은 책상','선물 상자','기아','1인 1닭 치킨 이용권'];
 const cats=['가구','캐릭터','소품','가구','소품','가구','소품','캐릭터','소품'];
 const products=originals.map((button,i)=>({name:names[i]||'가구',cat:cats[i]||'가구',button,kind:'furniture'}));
 const skins=[
