@@ -3,7 +3,7 @@ const cfg=window.CALENDAR_CONFIG;
 const root=document.getElementById('miniroomApp');
 if(!root)return;
 const $=id=>document.getElementById(id);
-const catalog=[{id:'bed',name:'리본 침대',icon:'',price:0},{id:'bear',name:'곰돌이',icon:'',price:0},{id:'plant',name:'작은 화분',icon:'',price:0},{id:'sofa',name:'구름 소파',icon:'',price:0},{id:'lamp',name:'별 조명',icon:'',price:0},{id:'desk',name:'작은 책상',icon:'',price:0},{id:'gift',name:'선물 상자',icon:'',price:0},{id:'cat',name:'고양이',icon:'',price:0}];
+const catalog=[{id:'bed',name:'2층침대',icon:'',price:0},{id:'bear',name:'그로밋 인형',icon:'',price:0},{id:'plant',name:'꽃다발',icon:'',price:0},{id:'sofa',name:'구름 소파',icon:'',price:0},{id:'lamp',name:'별 조명',icon:'',price:0},{id:'desk',name:'작은 책상',icon:'',price:0},{id:'gift',name:'선물 상자',icon:'',price:0},{id:'cat',name:'기아',icon:'',price:0}];
 let client=null,user=null,room=null,selected=null,busy=false,dirty=false,editing=false;
 const history=[];
 const snapshot=()=>({items:JSON.parse(JSON.stringify(room.items)),decor:window.gunwookDecor?.get()||null});
